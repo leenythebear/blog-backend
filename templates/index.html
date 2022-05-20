@@ -9,7 +9,8 @@
         <div class="container box_1620">
           <!-- Brand and toggle get grouped for better mobile display -->
           <a class="navbar-brand logo_h" href={% url 'index' %}><img src="{% static "img/logo.png" %}" alt="logo"></a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -53,21 +54,21 @@
       <div class="container">
         <div class="d-flex">
           {% for post in most_popular_posts %}
-          <div class="flex-fill" style="margin-right: 30px;">
-            <div class="card blog__slide text-center">
-              <div class="blog__slide__img">
-                {% if post.image_url %}
-                  <img class="card-img rounded-0" src="{{post.image_url}}" alt="post image">
-                {% else %}
-                  <img class="card-img rounded-0" src="{% static 'img/banner/blog.png' %}" alt="banner">
-                {% endif %}
-              </div>
-              <div class="blog__slide__content">
-                <h3><a href="#">{{post.title}}</a></h3>
-                <p>{{post.published_at}}</p>
+            <div class="flex-fill" style="margin-right: 30px;">
+              <div class="card blog__slide text-center">
+                <div class="blog__slide__img">
+                  {% if post.image_url %}
+                    <img class="card-img rounded-0" src="{{ post.image_url }}" alt="post image">
+                  {% else %}
+                    <img class="card-img rounded-0" src="{% static 'img/banner/blog.png' %}" alt="banner">
+                  {% endif %}
+                </div>
+                <div class="blog__slide__content">
+                  <h3><a href="#">{{ post.title }}</a></h3>
+                  <p>{{ post.published_at }}</p>
+                </div>
               </div>
             </div>
-          </div>
           {% endfor %}
         </div>
       </div>
@@ -80,51 +81,53 @@
         <div class="row">
           <div class="col-lg-8">
             {% for post in fresh_posts %}
-            <div class="single-recent-blog-post">
-              <div class="thumb">
-                {% if post.image_url %}
-                  <img class="img-fluid" src="{{post.image_url}}" alt="post image">
-                {% else %}
-                  <img class="img-fluid" src="{% static 'img/banner/blog.png' %}" alt="banner">
-                {% endif %}
-                <ul style=max-width:550px; class="thumb-info">
-                  <li><a href={% url 'post_detail' slug=post.slug %}><i class="ti-user"></i>{{post.author}}</a></li>
-                  <li><a href={% url 'post_detail' slug=post.slug %}><i class="ti-notepad"></i>{{post.published_at}}</a></li>
-                  <li><a href={% url 'post_detail' slug=post.slug %}><i class="ti-themify-favicon"></i>{{post.comments_amount}} Comments </a></li>
-                </ul>
+              <div class="single-recent-blog-post">
+                <div class="thumb">
+                  {% if post.image_url %}
+                    <img class="img-fluid" src="{{ post.image_url }}" alt="post image">
+                  {% else %}
+                    <img class="img-fluid" src="{% static 'img/banner/blog.png' %}" alt="banner">
+                  {% endif %}
+                  <ul style=max-width:550px; class="thumb-info">
+                    <li><a href={% url 'post_detail' slug=post.slug %}><i class="ti-user"></i>{{ post.author }}</a></li>
+                    <li><a href={% url 'post_detail' slug=post.slug %}><i class="ti-notepad"></i>{{ post.published_at }}
+                    </a></li>
+                    <li><a href={% url 'post_detail' slug=post.slug %}><i
+                      class="ti-themify-favicon"></i>{{ post.comments_amount }} Comments </a></li>
+                  </ul>
+                </div>
+                <div class="details mt-20">
+                  <h3>{{ post.title }}</h3>
+                  <p>{{ post.text|truncatechars:200 }}</p>
+                  <a class="button" href={% url 'post_detail' slug=post.slug %}>Read More <i class="ti-arrow-right"></i></a>
+                </div>
               </div>
-              <div class="details mt-20">
-                <h3>{{post.title}}</h3>
-                <p>{{post.text|truncatechars:200}}</p>
-                <a class="button" href={% url 'post_detail' slug=post.slug %}>Read More <i class="ti-arrow-right"></i></a>
-              </div>
-            </div>
             {% endfor %}
 
 
 
             <div class="row">
               <div class="col-lg-12">
-                  <nav class="blog-pagination justify-content-center d-flex">
-                      <ul class="pagination">
-                          <li class="page-item">
-                              <a href="#" class="page-link" aria-label="Previous">
+                <nav class="blog-pagination justify-content-center d-flex">
+                  <ul class="pagination">
+                    <li class="page-item">
+                      <a href="#" class="page-link" aria-label="Previous">
                                   <span aria-hidden="true">
                                       <i class="ti-angle-left"></i>
                                   </span>
-                              </a>
-                          </li>
-                          <li class="page-item active"><a href="#" class="page-link">1</a></li>
-                          <li class="page-item"><a href="#" class="page-link">2</a></li>
-                          <li class="page-item">
-                              <a href="#" class="page-link" aria-label="Next">
+                      </a>
+                    </li>
+                    <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                    <li class="page-item"><a href="#" class="page-link">2</a></li>
+                    <li class="page-item">
+                      <a href="#" class="page-link" aria-label="Next">
                                   <span aria-hidden="true">
                                       <i class="ti-angle-right"></i>
                                   </span>
-                              </a>
-                          </li>
-                      </ul>
-                  </nav>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
               </div>
             </div>
           </div>
@@ -136,8 +139,9 @@
                 <h4 class="single-sidebar-widget__title">Newsletter</h4>
                 <div class="form-group mt-30">
                   <div class="col-autos">
-                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email" onfocus="this.placeholder = ''"
-                      onblur="this.placeholder = 'Enter email'">
+                    <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="Enter email"
+                           onfocus="this.placeholder = ''"
+                           onblur="this.placeholder = 'Enter email'">
                   </div>
                 </div>
                 <button class="bbtns d-block mt-20 w-100">Subcribe</button>
@@ -164,7 +168,8 @@
           <div class="single-footer-widget">
             <h6>About Us</h6>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore dolore
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
+              dolore
               magna aliqua.
             </p>
           </div>
@@ -175,13 +180,15 @@
             <p>Stay update with our latest</p>
             <div class="" id="mc_embed_signup">
 
-              <form target="_blank" novalidate action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
-                method="get" class="form-inline">
+              <form target="_blank" novalidate
+                    action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+                    method="get" class="form-inline">
 
                 <div class="d-flex flex-row">
 
-                  <input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
-                    required="" type="email">
+                  <input class="form-control" name="EMAIL" placeholder="Enter Email" onfocus="this.placeholder = ''"
+                         onblur="this.placeholder = 'Enter Email '"
+                         required="" type="email">
 
 
                   <button class="click-btn btn btn-default"><span class="lnr lnr-arrow-right"></span></button>
@@ -221,7 +228,9 @@
       <div class="footer-bottom d-flex justify-content-center align-items-center flex-wrap">
         <p class="footer-text m-0">
           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+          Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+          All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
+          href="https://colorlib.com" target="_blank">Colorlib</a>
           <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
         </p>
       </div>
